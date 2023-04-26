@@ -12,7 +12,15 @@ final routerProvider = Provider<GoRouter>(
 
     return GoRouter(
       refreshListenable: router,
-      initialLocation: Routes.splash.path.value,
+      initialLocation: Routes.signIn.path.value,
+      redirect: (BuildContext bc, GoRouterState state) {
+        final isLoginRoute = state.subloc == Routes.signIn.path.value;
+        if (isLoginRoute && ref.watch(authenticationProvider) != null) {
+          return Routes.home.path.value;
+        }
+
+        return null;
+      },
       routes: <GoRoute>[
         GoRoute(
           path: Routes.splash.path.value,

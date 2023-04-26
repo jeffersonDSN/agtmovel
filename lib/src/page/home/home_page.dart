@@ -14,7 +14,9 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              ref.read(authenticationProvider.notifier).logoff();
+            },
             icon: const Icon(
               Icons.logout_outlined,
             ),

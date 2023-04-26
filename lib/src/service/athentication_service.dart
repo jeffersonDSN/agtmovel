@@ -17,6 +17,12 @@ class AuthenticationService extends StateNotifier<AuthenticationModel?> {
 
     return Future(() => state != null);
   }
+
+  Future<bool> logoff() async {
+    state = null;
+
+    return Future(() => state == null);
+  }
 }
 
 final authenticationProvider =

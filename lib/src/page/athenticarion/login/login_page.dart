@@ -14,33 +14,7 @@ class LoginPage extends ConsumerWidget {
 
     login() {
       if (controller.formKey.currentState!.validate()) {
-        ref.read(athenticationController).login().then(
-              (value) => {
-                if (value)
-                  {
-                    ref.read(routerProvider).pushReplacement(Paths.home.value),
-                  }
-                else
-                  {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        content: const Text(
-                          'Não localizamos o usuario',
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('OK'),
-                          )
-                        ],
-                      ),
-                    ),
-                  }
-              },
-            );
+        ref.read(athenticationController).login();
       }
     }
 
